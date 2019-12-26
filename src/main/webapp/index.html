@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messenger</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script>
+        window.onload = function () {
+            document.getElementById("send").onclick = function fun() {
+                var body = document.forms["myForm"]["message"].value;
+                if (body == "") {
+                    alert("Нельзя отправить пустое сообщение!");
+                } else {
+                    var url = "http://localhost:8181/message/send/";
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', url, true);
+                    xhr.setRequestHeader("Origin", "localhost");
+                    xhr.setRequestHeader("Content-type", "text/plain");
+                    xhr.send(body);
+                    xhr.onreadystatechange = function processRequest(e) {
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+                            if (xhr.status != 200 && xhr.response == "")
+                                alert("Сервер не отвечает");
+                            else
+                                alert(xhr.response);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container" style="text-align: left;width: 50%;float: contour;padding: 15px;margin: 0 auto;">
+    <form name="myForm">
+        <label for="message">Поле ввода:</label>
+        <textarea class="form-control" id="message" name="message" rows="3" cols="45"
+                  placeholder="Текст сообщения"></textarea>
+        <br>
+        <button type="button" id="send" class="btn btn-primary btn-lg">Отправить</button>
+    </form>
+</div>
+</body>
+</html>
