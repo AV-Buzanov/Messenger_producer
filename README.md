@@ -9,7 +9,7 @@ mvn install
 ```
 ## Commands to start application
 ```
-java -jar task-manager.jar
+java -jar 
 ```
 
 ## Стек технологий
