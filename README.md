@@ -3,10 +3,14 @@
 Для отправки сообщения в очередь нужно отправить POST запрос на адрес http://localhost:8181/message/send/, добавив текст сообщения в тело запроса с типом text/plain. Страница с формой отправки сообщения располагается в директории [webapp](./src/main/webapp). Реализация очереди: ActiveMQ 5
 
 ## Commands to build project
+```
 mvn clean
 mvn install
+```
 ## Commands to start application
-java -jar
+```
+java -jar 
+```
 
 ## Стек технологий
 
